@@ -4,8 +4,9 @@ const reducer = (posts = [] ,action) => { // first arg is state, 2nd are actions
       return action.payload;
     case 'CREATE':
       return [...posts, action.payload]; //keep the current posts state but add a new one
+    case 'LIKE':
     case 'UPDATE':
-      return posts.map((post) => (post._id === action.payload._id ? action.payload : post));
+      return posts.map((post) => (post._id === action.payload._id ? action.payload : post)); 
     case 'DELETE':
       return posts.filter((post) => post._id !== action.payload);
     default:
