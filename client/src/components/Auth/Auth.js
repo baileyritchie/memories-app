@@ -7,24 +7,42 @@ import {GoogleLogin} from 'react-google-login';
 import Icon from './icon'
 import {useDispatch} from 'react-redux';
 import {useHistory} from 'react-router-dom';
+import {signin,signup} from '../../actions/auth';
+
+const initialState = {
+  firstName: "",
+  lastName: "",
+  email: "",
+  password: "",
+  confirmPassword: ""
+}
+
 export default function Auth() {
+  
   const classes = useStyles();
   const [isSignup,setIsSignup] = useState(false);
   const [showPassword,setShowPassword] = useState(false);
+  const [formData,setFormData] = useState(initialState)
   const dispatch = useDispatch();
   const history = useHistory();
   const handleShowPassword = () => {
     setShowPassword(!showPassword);
   }
-  const handleSubmit = () => {
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // handle two types of button submits, signup and signin
 
+    if (isSignup) {
+      dispatch(signup(formData,history)); 
+    }
+    dispatch(signin(formData,history))
   }
-  const handleChange = () => {
-
+  const handleChange = (e) => {
+    setFormData({...formData,[e.target.name]: e.target.value});
   }
   const switchMode = () => {
     setIsSignup(!isSignup);
-    handleShowPassword(false);
+    setShowPassword(false);
   }
   const googleSuccess = (res) => {
     const result = res?.profileObj; // using optional chaining operator;
@@ -61,11 +79,10 @@ export default function Auth() {
               <>
                 <Input name="email" label="Email Address" handleChange={handleChange} type="email"/>
                 <Input name="password" label="Password" handleChange={handleChange} type={showPassword ? "text" : "password"} handleShowPassword={handleShowPassword}/>
-                {isSignup && <Input name="confirmPassword" label="Repeat Password" handleChange={handleChange} handleShowPassword={handleShowPassword}/>}
+                {isSignup && <Input name="confirmPassword" label="Repeat Password"  type={showPassword ? "text" : "password"} handleChange={handleChange} handleShowPassword={handleShowPassword}/>}
               </>
           </Grid>
-          
-          <Button type="submit" fullWidth variant="contained" color="primary" className={classes.submit}>{
+          <Button onSubmit={handleSubmit} type="submit" fullWidth variant="contained" color="primary" className={classes.submit}>{
             isSignup ? 'Sign Up' : 'Sign In'
           }</Button>
           <GoogleLogin 
