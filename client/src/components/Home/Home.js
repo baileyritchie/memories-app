@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux';
 
 import { getPosts } from '../../actions/posts';
 import Posts from '../Posts/AllPosts';
-import Form from '../Form/Form';
+import Form from '../Form/FormComponent';
 
 const Home = () =>  {
   const [currentId,setCurrentId] = useState(0);
