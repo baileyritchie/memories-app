@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API = axios.create({ baseURL:'https://baileyritchie-memories-frontend.zeet.app/'});
+const API = axios.create({ baseURL:'https://baileyritchie-memories-backend.zeet.app/'});
 
 // send token to backend via auth headers
 API.interceptors.request.use((req) => {
