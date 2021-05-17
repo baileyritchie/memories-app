@@ -22,7 +22,7 @@ const PORT = process.env.PORT || 5000;
 mongoose
   .connect(process.env.MONGODB_URI,
     {
-      dbName: process.env.MONGODB_NAMEL, 
+      dbName: process.env.MONGODB_NAME, 
       user: process.env.MONGODB_USER,
       pass: process.env.MONGODB_PASS,
       useNewUrlParser: true,
