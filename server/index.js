@@ -20,7 +20,13 @@ const DB_URL = process.env.DB_URL;
 const PORT = process.env.PORT || 5000;
 
 mongoose
-  .connect(`mongodb://${process.env.MONGO_INITDB_ROOT_USERNAME}:${process.env.MONGO_INITDB_ROOT_PASSWORD}@baileyritchie-mongo-production/memories`,{useNewUrlParser: true,useUnifiedTopology:true})
+  .connect(process.env.MONGODB_URI,
+    {
+      dbName: process.env.MONGODB_NAMEL, 
+      user: process.env.MONGODB_USER,
+      pass: process.env.MONGODB_PASS,
+      useNewUrlParser: true,
+      useUnifiedTopology:true})
   .then(() => app.listen(PORT,() => console.log(`Server running on ${PORT}.`)))
   .catch((error) => console.log('ERROR :',error.message));
 
