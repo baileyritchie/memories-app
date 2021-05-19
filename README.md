@@ -14,7 +14,7 @@ You must change the following before deployment:
   1. The URL found in the cleint's api folder to correctly reference your backend api.
   2. The proxy within the client's package.json file to your backend api.
   3. The frontend URL within the servers's index.js file ( change the cors - accepted origin to your deployed frontend url)
-  4. Add the appropriate MongoDB database options (in order to connect to the db, whether locally or through the cloud) in a process.env file.
+  4. Add the appropriate MongoDB database access variables (in order to connect to the db, whether locally or through the cloud) in a process.env file.
       * add MONGODB_NAME
       * add MONGODB_USER
       * add MONGODB_PASS
