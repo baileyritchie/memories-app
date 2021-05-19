@@ -15,10 +15,10 @@ You must change the following before deployment:
   2. The proxy within the client's package.json file to your backend api.
   3. The frontend URL within the servers's index.js file ( change the cors - accepted origin to your deployed frontend url)
   4. Add the appropriate MongoDB database options (in order to connect to the db, whether locally or through the cloud) in a process.env file.
-    * add MONGODB_NAME
-    * add MONGODB_USER
-    * add MONGODB_PASS
-    * add MONGODB_URI
+      * add MONGODB_NAME
+      * add MONGODB_USER
+      * add MONGODB_PASS
+      * add MONGODB_URI
 
     
   
